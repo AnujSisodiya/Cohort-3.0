@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+main{
+    height: 60%;
+    width: 60%;
+    background-color: rgb(65, 65, 65);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.todo-list{
+    width: 60%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: wheat;
+}
+
+input {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid whitesmoke;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: rgb(3, 65, 87);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+h3{
+    font-size: 25px;
+    font-weight: 500;
+}
