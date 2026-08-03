@@ -3,7 +3,7 @@ const inp1 = document.querySelector("#name");
 const inp2 = document.querySelector("#email");
 const users = document.querySelector(".user");
 const url = document.querySelector("#url")
-
+const submitBtn = form.querySelector("button");
 
 let editIndex = -1;
 
@@ -83,6 +83,7 @@ form.addEventListener("submit", (events)=>{
         userData[editIndex].image=image;
 
         editIndex = -1;
+        submitBtn.innerText = "Submit";
     }
     ui();
 
@@ -101,4 +102,6 @@ let editCard = (index) => {
    inp1.value = userData[editIndex].name;
    inp2.value = userData[editIndex].email;
    url.value = userData[editIndex].image;
+   submitBtn.innerText = "Update";
+
 }
