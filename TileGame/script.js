@@ -9,8 +9,10 @@ box.classList.add("box");
 
    let time = 0;
    let interval;
+   let timeout;
    let scoree= 0;
    let flag = 0;
+   let isPlaying = false;
 
 const randomColor = () =>{
     let r = Math.floor(Math.random() * 256);
@@ -36,16 +38,17 @@ const randomBox = ()=>{
 };
 
 box.addEventListener("click", ()=>{
-    if(flag == 0){
-    scoree += 1;
-    score.textContent = scoree;
-    flag = 1;
+    if (isPlaying && flag == 0) {
+        scoree += 1;
+        score.textContent = scoree;
+        flag = 1;
     }
 })
 
 btn.addEventListener("click", ()=>{
     clearInterval(interval);
- 
+
+   isPlaying = true;
    interval = setInterval(()=>{
      randomBox();
     time += 1;
@@ -53,8 +56,10 @@ btn.addEventListener("click", ()=>{
     flag = 0;
    },1000)
 
-   setTimeout(()=>{
+  timeout =  setTimeout(()=>{
        clearInterval(interval);
+    isPlaying = false;
+       box.remove();
        overlay.style.display = "flex";
 
        setTimeout(()=>{
