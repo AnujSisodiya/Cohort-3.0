@@ -5,38 +5,7 @@ const closeBtn = document.querySelector(".close");
 const form = document.querySelector("form");
 const productDiv =document.querySelector(".products")
 
-const productsArr = [
-  {
-    productName: "Nike Air Max Sneakers",
-    description: "Comfortable everyday sneakers with a lightweight design and cushioned sole.",
-    price: 4999,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
-  },
-  {
-    productName: "Classic White Sneakers",
-    description: "Minimal white sneakers perfect for casual outfits and everyday fashion.",
-    price: 2499,
-    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500"
-  },
-  {
-    productName: "Oversized Black T-Shirt",
-    description: "Premium cotton oversized T-shirt with a relaxed fit and modern streetwear style.",
-    price: 999,
-    image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"
-  },
-  {
-    productName: "Casual Check Shirt",
-    description: "Stylish checkered shirt made with soft cotton fabric for casual and semi-formal wear.",
-    price: 1499,
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500"
-  },
-  {
-    productName: "Graphic Streetwear T-Shirt",
-    description: "Trendy graphic T-shirt featuring a bold print and comfortable regular fit.",
-    price: 1199,
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500"
-  }
-];
+const productsArr = JSON.parse(localStorage.getItem("products")) || [];
 
 let updateIndex = null;
 
@@ -66,6 +35,7 @@ createBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click",()=>{
     formDiv.style.display = "none";
+     form.reset();
 });
 
 form.addEventListener("submit",(event)=>{
@@ -91,9 +61,11 @@ form.addEventListener("submit",(event)=>{
     if(updateIndex !== null){
      productsArr[updateIndex] = obj;
     updateIndex = null;
+    localStorage.setItem("products",JSON.stringify(productsArr));
     }
     else{
         productsArr.push(obj);
+        localStorage.setItem("products",JSON.stringify(productsArr));
     }
     ui();
     form.reset();
@@ -114,4 +86,5 @@ let updateProduct = (name) =>{
 let delProduct = (index) =>{
    productsArr.splice(index,1);
    ui();
+   localStorage.setItem("products",JSON.stringify(productsArr));
 }
