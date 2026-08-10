@@ -1,19 +1,19 @@
 import React from 'react';
 
-const Usercard = () => {
+const Usercard = ({ users }) => {
   return (
     <div className="p-6  border-2 border-white flex flex-col gap-2 rounded bg-black">
-      <div className="h-50 w-40">
+      <div className="h-50 w-60">
         <img
-          className="object-fit h-full w-full rounded"
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGhlYWRzaG90fGVufDB8fDB8fHww"
+          className="object-cover h-full w-full border-2 border-white rounded"
+          src={users.image}
           alt=""
         />
       </div>
       <div className="text-white">
-        <h1>Name</h1>
-        <p>Email</p>
-        <p>Contact</p>
+        <h1>{users.name}</h1>
+        <p>{users.Email}</p>
+        <p>{users.Number}</p>
       </div>
       <div className="flex justify-between text-white">
         <button className="py-2 px-3 bg-blue-500 rounded cursor-pointer">
