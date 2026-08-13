@@ -8,12 +8,13 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: #fee5ca;
 }
 
 main {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
-  background-color: #fee5ca;
+
   color: #bc0707;
   border: 4px solid #630c0c;
   text-transform: uppercase;
@@ -32,7 +33,7 @@ main {
 }
 
 .section1 {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -43,7 +44,7 @@ main {
 .header .links {
   font-size: 13px;
   display: flex;
-  gap: 10px;
+  gap: 40px;
 }
 
 .header {
@@ -135,13 +136,21 @@ main {
 .hero-left .hero-bottom i {
   height: 40px;
   width: 40px;
-  padding: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: 2px solid #bc0707;
   border-radius: 50%;
   cursor: pointer;
 }
+.hero-bottom i:nth-child(1) {
+  opacity: 0.5;
+}
 .hero-bottom {
+  display: flex;
+  gap: 10px;
   margin-bottom: 20px;
 }
 .hero-right {
@@ -154,4 +163,126 @@ main {
   border-radius: 15px;
   background-image: url(https://10magazine.com/wp-content/uploads/2023/02/Country-Life-613x800.jpg);
   background-size: cover;
+  background-position: center;
+}
+
+.section2 {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  padding: 30px;
+  background-color: #fee5ca;
+  border-top: 4px solid #630c0c;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 4fr 4fr 1fr;
+  grid-template-areas:
+    'heading heading heading heading'
+    'section-2-top-left section-2-top-left section-2-top-center section-2-top-right'
+    'section-2-mid-left section-2-mid-center section-2-mid-center section-2-mid-right'
+    'section-2-bottom section-2-bottom section-2-bottom section-2-bottom';
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  grid-area: heading;
+}
+
+.heading h1 {
+  font-size: 50px;
+  font-weight: 900;
+  color: #bc0707;
+  letter-spacing: -1px;
+}
+
+.section-2-top-left {
+  grid-area: section-2-top-left;
+}
+.section-2-top-center {
+  grid-area: section-2-top-center;
+}
+.section-2-top-right {
+  grid-area: section-2-top-right;
+}
+.section-2-mid-left {
+  grid-area: section-2-mid-left;
+}
+.section-2-mid-center {
+  grid-area: section-2-mid-center;
+}
+.section-2-mid-right {
+  grid-area: section-2-mid-right;
+}
+
+/* Card image wrapper div */
+.section2 > div > div:first-child {
+  height: 315px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Card images */
+.section2 > div > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Content below image in every card */
+.bottom-btn-text {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.section-2-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.section-2-btns > button {
+  padding: 3px 12px;
+  border: 1.5px solid #bc0707;
+  background-color: transparent;
+  color: #bc0707;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bottom-btn-text > h3 {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 16px;
+  color: #bc0707;
+  text-transform: uppercase;
+}
+
+.section-2-bottom {
+  grid-area: section-2-bottom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.section-2-bottom > button {
+  background-color: #bc0707;
+  color: #fee5ca;
+  padding: 16px;
+  width: 100%;
+  border-radius: 30px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
