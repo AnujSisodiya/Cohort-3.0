@@ -286,3 +286,122 @@ main {
   letter-spacing: 1px;
   cursor: pointer;
 }
+
+.section3 {
+  height: 100vh;
+  border: 4px solid #630c0c;
+  width: 100%;
+  display: flex;
+}
+.section-3-left {
+  height: 100%;
+  width: 50%;
+  border-right: 4px solid #630c0c;
+  padding: 20px;
+}
+.section-3-left .img-div {
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  background-image: url(https://images.unsplash.com/photo-1536924430914-91f9e2041b83?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fG1vZGVsfGVufDB8fDB8fHww);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-3-right {
+  height: 100%;
+  width: 50%;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'section-3-heading'
+    'track1'
+    'track2'
+    'track3'
+    'track4'
+    'track5';
+}
+
+.section-3-heading {
+  grid-area: section-3-heading;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+.section-3-heading h1 {
+  font-size: 65px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.track1 {
+  grid-area: track1;
+  border-radius: 12px;
+  border: 2px solid #bc0707;
+  display: flex;
+  justify-content: space-between;
+}
+.track-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+.track-left-paused {
+  width: 25px;
+  background-color: #bc0707;
+  color: #fee5ca;
+  border-radius: 20px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+}
+.track-left-play {
+  width: 25px;
+  cursor: pointer;
+  background-color: #fee5ca;
+  color: #bc0707;
+  border-radius: 20px;
+  height: 25px;
+  border: 1px solid #bc0707;
+}
+
+.track-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+.track-right i {
+  font-size: 25px;
+}
+.track2 {
+  grid-area: track2;
+  border-radius: 12px;
+  border: 2px solid #bc0707;
+  display: flex;
+  justify-content: space-between;
+}
+.track3 {
+  grid-area: track3;
+  border-radius: 12px;
+  border: 2px solid #bc0707;
+  display: flex;
+  justify-content: space-between;
+}
+.track4 {
+  grid-area: track4;
+  border-radius: 12px;
+  border: 2px solid #bc0707;
+  display: flex;
+  justify-content: space-between;
+}
+.track5 {
+  grid-area: track5;
+  border-radius: 12px;
+  border: 2px solid #bc0707;
+  display: flex;
+  justify-content: space-between;
+}
