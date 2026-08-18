@@ -1,4 +1,14 @@
-const ProductCard = ({ product, setCartItems }) => {
+import { MyStore } from '../Context/MyStore';
+import { useContext } from 'react';
+const ProductCard = ({ product, isInCart }) => {
+  let { setCartItems, incrementQuantity, decrementQuantity } =
+    useContext(MyStore);
+
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
+    alert('Product Added to the Cart');
+  };
+
   return (
     <div className="w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Product Image */}
@@ -43,15 +53,20 @@ const ProductCard = ({ product, setCartItems }) => {
           <span className="text-2xl font-bold text-gray-900">
             ${product.price}
           </span>
-
-          <button
-            onClick={() => {
-              setCartItems((prev) => [...prev, product]);
-            }}
-            className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-700"
-          >
-            Add to Cart
-          </button>
+          {isInCart ? (
+            <button className="flex items-center justify-center gap-4 rounded-lg w-25 bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-700">
+              <span onClick={() => decrementQuantity(product.id)}>-</span>
+              <span>{isInCart.quantity}</span>
+              <span onClick={() => incrementQuantity(product.id)}>+</span>
+            </button>
+          ) : (
+            <button
+              onClick={addToCart}
+              className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-700"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

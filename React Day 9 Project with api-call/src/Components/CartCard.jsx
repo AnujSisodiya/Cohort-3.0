@@ -1,8 +1,18 @@
-import React from 'react';
+import { React, useContext } from 'react';
+import { MyStore } from '../Context/MyStore';
 
-const CartCard = ({ product, quantity = 1 }) => {
+const CartCard = ({ product }) => {
+  let { setCartItems, incrementQuantity, decrementQuantity } =
+    useContext(MyStore);
+
+  const deleteItem = (id) => {
+    setCartItems((prev) => {
+      return prev.filter((val) => val.id !== id);
+    });
+  };
+
   return (
-    <div className="flex w-full items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="flex h-50 w-full items-center gap-5 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
       {/* Product Image */}
       <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-xl bg-gray-50 p-3">
         <img
@@ -27,21 +37,28 @@ const CartCard = ({ product, quantity = 1 }) => {
 
       {/* Quantity */}
       <div className="flex items-center gap-3">
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-300 text-lg font-medium hover:bg-gray-100">
+        <button
+          onClick={() => decrementQuantity(product.id)}
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-300 text-lg font-medium hover:bg-gray-100"
+        >
           −
         </button>
 
         <span className="w-6 text-center text-sm font-semibold">
-          {quantity}
+          {product.quantity}
         </span>
 
-        <button className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-300 text-lg font-medium hover:bg-gray-100">
+        <button
+          onClick={() => incrementQuantity(product.id)}
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-300 text-lg font-medium hover:bg-gray-100"
+        >
           +
         </button>
       </div>
 
       {/* Remove */}
       <button
+        onClick={() => deleteItem(product.id)}
         className="rounded-lg p-2 text-gray-400 transition hover:bg-red-50 hover:text-red-500"
         title="Remove item"
       >

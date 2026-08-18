@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Nav from './Components/Nav';
 import ProductCards from './Components/ProductCards';
 import CartScreen from './Pages/CartScreen';
+import { MyStore } from './Context/MyStore';
 
 const App = () => {
   const [productsData, setProductsData] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-
+  let { isCartOpen, cartItems } = useContext(MyStore);
   const getProductsData = async () => {
     try {
       let res = await axios.get('https://fakestoreapi.com/products');
@@ -23,20 +22,18 @@ const App = () => {
 
   return (
     <div>
-      <Nav setIsCartOpen={setIsCartOpen} />
+      <Nav />
       {isCartOpen ? (
         <div>
-          <CartScreen cartItems={cartItems} />
+          <CartScreen />
         </div>
       ) : (
         <div className="flex flex-wrap gap-5 p-4">
           {productsData.map((elem) => {
+            let isInCart = cartItems.find((val) => val.id === elem.id);
+
             return (
-              <ProductCards
-                key={elem.id}
-                product={elem}
-                setCartItems={setCartItems}
-              />
+              <ProductCards key={elem.id} product={elem} isInCart={isInCart} />
             );
           })}
         </div>
