@@ -1,13 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
-    <div className="p-4 bg-black flex items-center justify-between">
+    <div className="p-4 bg-black flex items-center justify-between text-white">
       <div>Logo</div>
-      <div>
-        <p>Home</p>
-        <p>Product</p>
-        <p>About</p>
+      <div className="flex gap-10 ">
+        <NavLink to={'/'}>Home</NavLink>
+        <NavLink to={'/About'}>About</NavLink>
       </div>
       <button>Login</button>
     </div>

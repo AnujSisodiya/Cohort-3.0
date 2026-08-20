@@ -6,6 +6,8 @@ import { ContextProvider } from './Context/MyContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </BrowserRouter>
 );
