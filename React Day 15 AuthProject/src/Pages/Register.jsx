@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 
+import { Auth } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
+
 const Register = () => {
-  let nevigate = useNavigate();
+  let navigate = useNavigate();
   let {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const { registeredUsers, setRegisteredUsers } = useContext(Auth);
+  const { registeredUsers, setRegisteredUsers, setLoggedInUser } =
+    useContext(Auth);
+
   const FormSubmit = (data) => {
-    console.log(data);
+    let arr = [...registeredUsers, data];
+    setRegisteredUsers(arr);
+
+    toast.success('User Registered Successfully!!');
+    setLoggedInUser(data);
+
+    localStorage.setItem('loggedInUsers', JSON.stringify(data));
+    localStorage.setItem('registeredUsers', JSON.stringify(arr));
+
+    navigate('/main');
+    reset();
   };
 
   return (
@@ -97,7 +112,7 @@ const Register = () => {
         <p className="text-center text-sm text-gray-500 mt-6">
           Already have an account?{' '}
           <button
-            onClick={() => nevigate('/')}
+            onClick={() => navigate('/')}
             className="text-blue-600 font-semibold hover:underline"
           >
             Login

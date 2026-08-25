@@ -1,18 +1,32 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { Auth } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
+
 const Login = () => {
-  let nevigate = useNavigate();
+  const { registeredUsers, setLoggedInUser } = useContext(Auth);
+  let navigate = useNavigate();
   let {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const { registeredUsers, setRegisteredUsers } = useContext(Auth);
 
   const FormSubmit = (data) => {
-    console.log(data);
+    let user = registeredUsers.find((val) => {
+      return val.email === data.email && val.password === data.password;
+    });
+
+    if (!user) {
+      return toast.error('User is Invalid check Creds');
+    } else {
+      toast.success('User LoggedIN Successfull');
+      setLoggedInUser(user);
+      localStorage.setItem('loggedInUsers', JSON.stringify(user));
+      navigate('/main');
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -74,7 +88,7 @@ const Login = () => {
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{' '}
           <button
-            onClick={() => nevigate('/register')}
+            onClick={() => navigate('/register')}
             className="text-blue-600 font-semibold hover:underline"
           >
             Sign up

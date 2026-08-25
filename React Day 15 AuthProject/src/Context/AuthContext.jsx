@@ -1,10 +1,15 @@
-import { Children, createContext } from 'react';
+import { children, createContext, useState } from 'react';
 
 export const Auth = createContext();
 
-export const AuthProvider = ({ Children }) => {
-  const [registeredUsers, setRegisteredUsers] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState([]);
+export const AuthProvider = ({ children }) => {
+  const [registeredUsers, setRegisteredUsers] = useState(
+    JSON.parse(localStorage.getItem('registeredUsers')) || []
+  );
+  const [loggedInUser, setLoggedInUser] = useState(
+    JSON.parse(localStorage.getItem('loggedInUsers'))
+  );
+
   return (
     <Auth.Provider
       value={{
@@ -14,7 +19,7 @@ export const AuthProvider = ({ Children }) => {
         setLoggedInUser,
       }}
     >
-      {Children}
+      {children}
     </Auth.Provider>
   );
 };
