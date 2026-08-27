@@ -408,3 +408,66 @@ main {
   display: flex;
   justify-content: space-between;
 }
+
+.section4 {
+  height: 70vh;
+  width: 100%;
+  border: 2px solid #bc0707;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 2fr 8fr;
+  grid-template-areas:
+    'section-4-top section-4-top section-4-top section-4-top'
+    'section-4-bottom-left section-4-bottom-center1 section-4-bottom-center2 section-4-bottom-right';
+}
+
+.section-4-top {
+  grid-area: section-4-top;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.section-4-top h1 {
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+.section-4-bottom-left {
+  grid-area: section-4-bottom-left;
+}
+.section-4-bottom-center1 {
+  grid-area: section-4-bottom-center1;
+}
+.section-4-bottom-center2 {
+  grid-area: section-4-bottom-center2;
+}
+.section-4-bottom-right {
+  grid-area: section-4-bottom-right;
+}
+.small-box {
+  height: 400px;
+  width: 380px;
+}
+.section-4-img-div {
+  height: 80%;
+  border: 3px solid #bc0707;
+  border-radius: 5px;
+}
+
+.section-4-img-div:nth-child(1) {
+  background-image: url(https://static.vecteezy.com/system/resources/thumbnails/046/829/943/small/yellow-t-shirt-isolated-on-transparent-background-png.png);
+  background-size: contain;
+  background-position: center;
+}
+.large-box {
+  height: 400px;
+  width: 380px;
+  padding: 30px;
+}
+
+.large-box .section-4-img-div {
+  height: 95%;
+  border: 3px solid #bc0707;
+  border-radius: 5px;
+}

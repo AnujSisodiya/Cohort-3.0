@@ -10,8 +10,8 @@ const App = () => {
   });
 
   const delUser = (id) => {
-    let filteredUser = userData.filter((val, index) => {
-      return index !== id;
+    let filteredUser = userData.filter((val) => {
+      return val.id !== id;
     });
     console.log(filteredUser);
     setUserData(filteredUser);
@@ -30,9 +30,8 @@ const App = () => {
                 setToggle={setToggle}
                 setUpdatedData={setUpdatedData}
                 delUser={delUser}
-                ind={elem.id}
                 users={elem}
-                key={id}
+                key={elem.id}
               />
             );
           })}

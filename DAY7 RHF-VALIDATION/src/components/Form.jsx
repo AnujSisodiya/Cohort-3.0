@@ -16,7 +16,7 @@ const Form = ({ setToggle, setUserData, userData, updatedData }) => {
     if (updatedData) {
       setUserData((prev) => {
         return prev.map((val) => {
-          val.id === updatedData.id ? { ...data } : val;
+          return val.id === updatedData.id ? { ...data } : val;
         });
       });
     } else {
