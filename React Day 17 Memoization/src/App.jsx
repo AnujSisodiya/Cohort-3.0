@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Home from './Components/Home';
 import About from './Components/About';
 import { useCallback } from 'react';
+import { useMemo } from 'react';
 
 const App = () => {
   console.log('App Rendering');
@@ -15,6 +16,15 @@ const App = () => {
   // useCallback memoizes the function reference.
   // - When 'count' changes: 'user' dependency hasn't changed, so useCallback returns the SAME function reference for 'greet'.
   // - When 'user' changes: 'user' dependency changed, so useCallback creates a NEW function reference for 'greet'.
+
+  let calculation = useMemo(() => {
+    let sum = 0;
+    console.log('My Calculation Running..');
+    for (let i = 0; i < 1000000; i++) {
+      sum += i;
+    }
+    return sum;
+  }, []);
 
   return (
     <div>
@@ -30,6 +40,7 @@ const App = () => {
           'greet' gets a NEW function reference -> <About /> WILL re-render. */}
         Change Name
       </button>
+      <h1>My Calculation is {calculation}</h1>
       <Home user={user} greet={greet} />
       {/* Receives 'user' object prop. React.memo does shallow comparison on user reference. Here The value is keep changing so Home will re-render */}
       <About greet={greet} />
