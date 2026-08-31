@@ -28,6 +28,7 @@ export const useAuth = () => {
       return;
     }
     dispatch(addUser(user));
+    localStorage.setItem('loggedInUsers', JSON.stringify(user));
     toast.success('Login Successfull');
     reset();
   };
