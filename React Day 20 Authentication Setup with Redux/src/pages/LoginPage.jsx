@@ -2,7 +2,9 @@ import React from 'react';
 import { useAuth } from '../hooks/authHooks';
 
 const Login = () => {
-  let { navigate } = useAuth();
+  let { navigate, register, handleSubmit, errors, reset, loginForm } =
+    useAuth();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
@@ -13,17 +15,23 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit(loginForm)} className="space-y-5">
           {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Email
             </label>
             <input
+              {...register('email', {
+                required: 'Email is required',
+              })}
               type="email"
               placeholder="Enter your email"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -32,10 +40,20 @@ const Login = () => {
               Password
             </label>
             <input
+              {...register('password', {
+                required: 'Password is required',
+                minLength: {
+                  value: 8,
+                  message: 'Minimum 8 letters are required',
+                },
+              })}
               type="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Login Button */}
