@@ -9,6 +9,9 @@ import PublicProtected from './protected/PublicProtected';
 import MainProtected from './protected/MainProtected';
 import HomePage from '../pages/HomePage';
 import { toast } from 'react-toastify';
+import { addUser } from '../features/authSlice';
+import ShopPage from '../pages/ShopPage';
+import AboutPage from '../pages/AboutPage';
 
 const Approutes = () => {
   //Hydrating the User
@@ -58,6 +61,14 @@ const Approutes = () => {
             {
               path: '',
               element: <HomePage />,
+            },
+            {
+              path: 'shop',
+              element: <ShopPage />,
+            },
+            {
+              path: 'about',
+              element: <AboutPage />,
             },
           ],
         },
