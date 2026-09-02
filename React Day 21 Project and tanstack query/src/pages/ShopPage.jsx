@@ -5,22 +5,49 @@ import ProductCardSkeleton from '../components/ProductCardSkeleton';
 
 import { useProductApi } from '../hooks/productsHook';
 import Filters from '../components/Filters';
+import { getProductsData } from '../../api/ProductApi';
 
 const ShopPage = () => {
-  let { data, isPending, error } = useProductApi();
+  const [productsData, setProductsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  if (error) return <h1>{error.message}</h1>;
+  const getProducts = async () => {
+    try {
+      let data = await getProductsData();
+      setProductsData(data);
+      setFilteredProducts(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  let filterProducts = (searchParams) => {
+    let filteredData = productsData.filter((val) => {
+      return val.title.toLowerCase().includes(searchParams.toLowerCase());
+    });
+    if (filteredData) {
+      setFilteredProducts(filteredData);
+    }
+    console.log(filteredData);
+  };
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
-    <div className="p-4">
+    <div>
       <div className="p-4">
-        <Filters />
+        <Filters filterProducts={filterProducts} />
       </div>
       <div className="grid grid-cols-6 gap-6">
-        {isPending
+        {isLoading
           ? Array.from({ length: 18 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))
-          : data.map((product) => (
+          : filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
       </div>

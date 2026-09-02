@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Filters = () => {
+const Filters = ({ filterProducts }) => {
   return (
     <div className="p-3 border rounded border-gray-500">
       <div className="flex gap-8 ">
         <input
+          onChange={(e) => filterProducts(e.target.value)}
           className="w-full p-2 border rounded outline-0"
           type="text"
           placeholder="Search any products...."
