@@ -1,7 +1,7 @@
 import { getProductsData } from '../../api/ProductApi';
 import { useQuery } from '@tanstack/react-query';
 
-const useProductApi = () => {
+export const useProductApi = () => {
   let { data, isPending, error } = useQuery({
     queryKey: ['products'],
     queryFn: getProductsData,
