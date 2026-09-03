@@ -10,24 +10,33 @@ import ProductPage from '../features/products/ui/components/pages/ProductPage';
 import Homepage from '../shared/ui/pages/Homepage';
 import CartPage from '../features/cart/ui/components/pages/CartPage';
 import OrderPage from '../features/orders/ui/components/pages/OrderPage';
-import { hydrateUser } from '../features/auth/api/authApi';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../features/auth/state/authSlice';
 import { useEffect } from 'react';
+import { hydrateUserAction } from '../features/auth/state/authAction';
 
 const AppRoutes = () => {
   let dispatch = useDispatch();
   useEffect(() => {
-    (async () => {
+    (() => {
       try {
-        let response = await hydrateUser();
-        console.log(response);
-        dispatch(addUser(response));
+        dispatch(hydrateUserAction());
       } catch (error) {
-        console.log(error);
+        console.log('Error in hydrate user api', error);
       }
     })();
   }, []);
+  // let dispatch = useDispatch();
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       let response = await hydrateUser();
+  //       console.log(response);
+  //       dispatch(addUser(response));
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, []);
   let router = createBrowserRouter([
     {
       path: '/',
