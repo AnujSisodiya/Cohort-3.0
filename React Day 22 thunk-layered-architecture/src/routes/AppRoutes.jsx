@@ -7,6 +7,9 @@ import MainLayout from '../app/layout/MainLayout';
 import MainProtected from './protected/MainProtected';
 import AboutPage from '../shared/ui/pages/AboutPage';
 import ProductPage from '../features/products/ui/components/pages/ProductPage';
+import Homepage from '../shared/ui/pages/Homepage';
+import CartPage from '../features/cart/ui/components/pages/CartPage';
+import OrderPage from '../features/orders/ui/components/pages/OrderPage';
 const AppRoutes = () => {
   let router = createBrowserRouter([
     {
@@ -39,7 +42,7 @@ const AppRoutes = () => {
           children: [
             {
               path: '',
-              element: <HomePage />,
+              element: <Homepage />,
             },
             {
               path: 'product',
