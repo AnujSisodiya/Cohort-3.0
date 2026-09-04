@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAllCategories } from '../hooks/useProductHook';
 
-const Filter = ({ search, setSearch }) => {
+const Filter = ({ search, setSearch, category, setCategory }) => {
   let { data, isPending, errors } = useAllCategories();
 
   if (isPending) return <h1>Loading State</h1>;
@@ -21,7 +21,11 @@ const Filter = ({ search, setSearch }) => {
 
       {/* Category Select */}
       <div className="w-full sm:w-56">
-        <select className="w-full cursor-pointer rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white outline-none focus:border-white">
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full cursor-pointer rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white outline-none focus:border-white"
+        >
           <option value="">All Categories</option>
 
           {data.map((category) => (

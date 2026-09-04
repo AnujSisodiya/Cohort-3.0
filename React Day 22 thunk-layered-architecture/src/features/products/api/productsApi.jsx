@@ -20,3 +20,14 @@ export const getAllCategories = async () => {
     console.log('Error in categories APi', error);
   }
 };
+
+export const productByCategory = async (category) => {
+  if (!category) return null;
+  try {
+    let res = await api.get(`products/category/${category}`);
+    return res.data;
+  } catch (error) {
+    console.log('Error in categories APi', error);
+    throw error;
+  }
+};
