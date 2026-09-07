@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-const Home = ({ user }) => {
+const Home = ({ user, greet }) => {
   console.log('Home rendering');
   return <div>Home this side</div>;
 };

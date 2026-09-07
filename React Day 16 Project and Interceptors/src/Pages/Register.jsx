@@ -1,9 +1,4 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router';
-import { useForm } from 'react-hook-form';
-
-import { Auth } from '../Context/AuthContext';
-import { toast } from 'react-toastify';
 
 const Register = () => {
   const { navigate, register, handleSubmit, errors, registerFormSubmit } =

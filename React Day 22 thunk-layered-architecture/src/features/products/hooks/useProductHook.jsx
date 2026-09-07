@@ -47,7 +47,6 @@ export const useProductByCategory = () => {
   let { data, isPending, errors } = useQuery({
     queryKey: ['productsBycategory', category],
     queryFn: () => productByCategory(category),
-    enabled: !!category,
   });
   return {
     data,

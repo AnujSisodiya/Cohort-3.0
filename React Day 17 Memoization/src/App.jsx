@@ -25,6 +25,9 @@ const App = () => {
     }
     return sum;
   }, []);
+  // useMemo caches (memoizes) the RETURNED VALUE of an expensive calculation.
+  // - Dependency array [] is empty -> loop runs ONCE on initial render.
+  // - On subsequent re-renders (count or user changes), React skips running the loop and reuses the cached 'sum' value.
 
   return (
     <div>
