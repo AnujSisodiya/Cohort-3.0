@@ -52,4 +52,17 @@ let role = Role.ADMIN;
 let yolo = 'Rahul';
 yolo = 90;
 let status = 'Pending';
+// Object Types
+let userObj = {
+    name: 'Anuj',
+    age: 24,
+    company: 'Sheriyans',
+    address: {
+        street: 'HoshiyarPur',
+        city: 'Noida',
+        state: 'UttarPradesh',
+    },
+};
+userObj.name = 'Ashish';
+console.log(userObj);
 //# sourceMappingURL=index.js.map

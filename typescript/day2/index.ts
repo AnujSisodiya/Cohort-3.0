@@ -93,3 +93,28 @@ yolo = 90;
 type Status = 'Pending' | 'Success' | 'Error';
 
 let status: Status = 'Pending';
+
+// Object Types
+
+let userObj: {
+  name: String;
+  age: number;
+  company: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+  };
+} = {
+  name: 'Anuj',
+  age: 24,
+  company: 'Sheriyans',
+  address: {
+    street: 'HoshiyarPur',
+    city: 'Noida',
+    state: 'UttarPradesh',
+  },
+};
+
+userObj.name = 'Ashish';
+console.log(userObj);
