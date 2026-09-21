@@ -51,4 +51,5 @@ let role = Role.ADMIN;
 //Union Types
 let yolo = 'Rahul';
 yolo = 90;
+let status = 'Pending';
 //# sourceMappingURL=index.js.map

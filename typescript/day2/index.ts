@@ -87,3 +87,9 @@ let role: Role = Role.ADMIN;
 let yolo: string | number | boolean = 'Rahul';
 
 yolo = 90;
+
+//Literal Types
+
+type Status = 'Pending' | 'Success' | 'Error';
+
+let status: Status = 'Pending';
