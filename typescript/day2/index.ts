@@ -81,3 +81,9 @@ enum Role {
 }
 
 let role: Role = Role.ADMIN;
+
+//Union Types
+
+let yolo: string | number | boolean = 'Rahul';
+
+yolo = 90;

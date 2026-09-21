@@ -48,4 +48,7 @@ var Role;
     Role[Role["USER"] = 2] = "USER";
 })(Role || (Role = {}));
 let role = Role.ADMIN;
+//Union Types
+let yolo = 'Rahul';
+yolo = 90;
 //# sourceMappingURL=index.js.map
