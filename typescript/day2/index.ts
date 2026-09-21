@@ -96,7 +96,8 @@ let status: Status = 'Pending';
 
 // Object Types
 
-let userObj: {
+//OR WE CAN DEFINE THE TYPE
+type UserObj = {
   name: String;
   age: number;
   company: string;
@@ -105,7 +106,9 @@ let userObj: {
     city: string;
     state: string;
   };
-} = {
+};
+
+let userObj: UserObj = {
   name: 'Anuj',
   age: 24,
   company: 'Sheriyans',

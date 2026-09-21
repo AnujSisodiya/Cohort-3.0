@@ -52,7 +52,6 @@ let role = Role.ADMIN;
 let yolo = 'Rahul';
 yolo = 90;
 let status = 'Pending';
-// Object Types
 let userObj = {
     name: 'Anuj',
     age: 24,
