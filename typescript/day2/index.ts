@@ -71,3 +71,13 @@ let arr3: [{ name: string }, { name: string }] = [
   { name: 'Anuj' },
   { name: 'Riya' },
 ];
+
+//Enums - Options
+
+enum Role {
+  ADMIN,
+  SUPER_ADMIN,
+  USER,
+}
+
+let role: Role = Role.ADMIN;

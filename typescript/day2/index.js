@@ -40,4 +40,12 @@ let arr3 = [
     { name: 'Anuj' },
     { name: 'Riya' },
 ];
+//Enums - Options
+var Role;
+(function (Role) {
+    Role[Role["ADMIN"] = 0] = "ADMIN";
+    Role[Role["SUPER_ADMIN"] = 1] = "SUPER_ADMIN";
+    Role[Role["USER"] = 2] = "USER";
+})(Role || (Role = {}));
+let role = Role.ADMIN;
 //# sourceMappingURL=index.js.map
