@@ -129,5 +129,19 @@ let sum = (a: number, b: number): number => {
   return a + b;
 };
 
-let res /* : number*/ = sum(50, 100);
+let res: number = sum(50, 100);
 // We can also define the type here or Also asign the return type to the function
+
+//curring function
+
+let sum1 = (a: number) => {
+  return (b?: number) => {
+    if (b !== undefined) return sum1(a + b);
+    return a;
+  };
+};
+
+let data = sum1(20)(29)(49)(46)();
+console.log(data);
+
+// when B is undefined it will return the Sum of A and b and When we pass the value of b it will return the function
