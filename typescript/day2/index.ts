@@ -106,6 +106,7 @@ type UserObj = {
     city: string;
     state: string;
   };
+  employeeId?: string; // We can make it optional so that typescript can ignore it and add it for later
 };
 
 let userObj: UserObj = {
@@ -121,3 +122,12 @@ let userObj: UserObj = {
 
 userObj.name = 'Ashish';
 console.log(userObj);
+
+//Function Types
+
+let sum = (a: number, b: number): number => {
+  return a + b;
+};
+
+let res /* : number*/ = sum(50, 100);
+// We can also define the type here or Also asign the return type to the function

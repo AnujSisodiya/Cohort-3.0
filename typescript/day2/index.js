@@ -64,4 +64,10 @@ let userObj = {
 };
 userObj.name = 'Ashish';
 console.log(userObj);
+//Function Types
+let sum = (a, b) => {
+    return a + b;
+};
+let res /* : number*/ = sum(50, 100);
+// We can also define the type here or Also asign the return type to the function
 //# sourceMappingURL=index.js.map
